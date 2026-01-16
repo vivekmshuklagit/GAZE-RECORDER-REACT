@@ -1,0 +1,338 @@
+[
+  {
+    "id": "q1",
+    "type": "mcq",
+    "prompt": "Describe your classroom as it was last year—where was your seat?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+{
+    "id": "q2",
+    "type": "mcq",
+    "prompt": "Recall the voice of your favourite teacher and describe it",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q3",
+    "type": "mcq",
+    "prompt": "What did you do on the last festival you celebrated at home?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q4",
+    "type": "mcq",
+    "prompt": "Remember a time when you felt very confident in school",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q5",
+    "type": "mcq",
+    "prompt": "Think about your childhood home—what colour were the walls?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q6",
+    "type": "mcq",
+    "prompt": "Imagine a school without exams—how would learning happen?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q7",
+    "type": "mcq",
+    "prompt": "Create a new game that students can play in the classroom",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q8",
+    "type": "mcq",
+    "prompt": "If you could invent a new subject, what would it be?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q9",
+    "type": "mcq",
+    "prompt": "Imagine meeting your future self at age 30—what advice would you get?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q10",
+    "type": "mcq",
+    "prompt": "Design a festival that does not exist yet.",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q11",
+    "type": "mcq",
+    "prompt": "Visualize your classroom from above—where are the windows?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q12",
+    "type": "mcq",
+    "prompt": "Imagine the school building painted bright yellow—how does it look?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q13",
+    "type": "mcq",
+    "prompt": "Picture your room at night with only one light on—where is it?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q14",
+    "type": "mcq",
+    "prompt": "Visualize a mountain road—describe its turns",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q15",
+    "type": "mcq",
+    "prompt": "Imagine a map of your school—where is the playground?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q16",
+    "type": "mcq",
+    "prompt": "Visualize a mountain road—describe its turns.",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q17",
+    "type": "mcq",
+    "prompt": "What do you say to yourself when you make a mistake?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q18",
+    "type": "mcq",
+    "prompt": "How do you feel inside when someone ignores you?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q19",
+    "type": "mcq",
+    "prompt": "What thoughts come when you feel nervous before an exam?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q20",
+    "type": "mcq",
+    "prompt": "When you are angry, how do you calm yourself?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q21",
+    "type": "mcq",
+    "prompt": "Picture your room at night with only one light on—where is it?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q22",
+    "type": "mcq",
+    "prompt": "What does confidence feel like inside your body?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q23",
+    "type": "mcq",
+    "prompt": "If a friend asks you to cheat, what would you do and why?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q24",
+    "type": "mcq",
+    "prompt": "Would you prefer being popular or being honest? Explain",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q25",
+    "type": "mcq",
+    "prompt": "Two teachers treat you unfairly—how would you respond?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q26",
+    "type": "mcq",
+    "prompt": "Would you prefer being popular or being honest? Explain",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q27",
+    "type": "mcq",
+    "prompt": "If you fail once but succeed later, which matters more to you?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "q28",
+    "type": "mcq",
+    "prompt": "Is it better to speak up or stay silent in a conflict?",
+    "showOptions": false,
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+node_modules
+.dist
+.DS_Store
+.env
+.env.*
+*.log
+
+# Vite
+/dist
+
+# Editor
+.vscode
+.idea
+
+# OS
+Thumbs.db
