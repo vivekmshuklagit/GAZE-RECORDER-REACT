@@ -216,6 +216,7 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
       const y = clamp(g.y, 0, window.innerHeight);
 
       const ctx = getDomContextAtPoint(x, y);
+      const questionId = getActiveQuestionId();
 
       samplesRef.current.push({
         session_id: sessionIdRef.current,
@@ -235,6 +236,7 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
 
         content_id: ctx.content_id,
         content_type: ctx.content_type,
+        question_id: questionId,
 
         element_tag: ctx.element_tag,
         element_id: ctx.element_id,
@@ -489,7 +491,7 @@ const overlayStyle = {
 
 const overlayTextStyle = {
   position: "fixed",
-  top: 16,
+  top: 96,
   left: 16,
   color: "white",
   fontFamily: "system-ui",
