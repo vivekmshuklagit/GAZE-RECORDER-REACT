@@ -8,6 +8,16 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import useAudioRecorder from "./useAudioRecorder";
 
+function safeUUID() {
+  if (crypto?.randomUUID) return crypto.randomUUID();
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
 function csvEscape(v) {
   if (v == null) return "";
   const s = String(v);
@@ -118,7 +128,7 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
 
   const samplesRef = useRef([]);
   const lastGazeRef = useRef(null);
-  const sessionIdRef = useRef(crypto.randomUUID());
+  const sessionIdRef = useRef(safeUUID());
   const intervalRef = useRef(null);
   const audioSegmentIdRef = useRef(null);
   const audioRecordingRef = useRef(false);
@@ -290,7 +300,7 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
 
   function startRecording() {
     samplesRef.current = [];
-    sessionIdRef.current = crypto.randomUUID();
+    sessionIdRef.current = safeUUID();
     recordingStartTsRef.current = performance.now();
     clearAudioRecordings();
     audioSegmentIdRef.current = null;
@@ -317,7 +327,7 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
     if (!recording) return;
     if (!audioSupported) return;
     const questionId = getActiveQuestionId();
-    const id = crypto.randomUUID();
+    const id = safeUUID();
     const startedId = await startAudio({
       id,
       meta: { question_id: questionId, session_id: sessionIdRef.current },
