@@ -199,7 +199,7 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
         setReady(true);
         setStatus("ready");
       } catch (e) {
-        setStatus(`failed to start: \${String(e?.message || e)}`);
+        setStatus(`failed to start: ${String(e?.message || e)}`);
       }
     })();
 
