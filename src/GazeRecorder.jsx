@@ -439,7 +439,7 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
               </div>
             </div>
             <div style={{ marginTop: 10, fontSize: 12, opacity: 0.8 }}>
-              Tip: keep your head steady; consistent lighting helps.
+              Tip: keep your head as still as possible and move only your eyes; consistent lighting helps.
             </div>
           </div>
 
