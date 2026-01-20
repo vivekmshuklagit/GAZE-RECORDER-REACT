@@ -2,7 +2,7 @@
   {
     "id": "q1",
     "type": "mcq",
-    "prompt": "English Synonyms for words - Good?",
+    "prompt": "What is a book. Explain.",
     "showOptions": false,
     "options": [
       "A",
@@ -14,7 +14,7 @@
 {
     "id": "q2",
     "type": "mcq",
-    "prompt": "English Synonyms for words - Bad?",
+    "prompt": "Which alphabet comes 4 places after H?",
     "showOptions": false,
     "options": [
       "A",
@@ -26,7 +26,7 @@
   {
     "id": "q3",
     "type": "mcq",
-    "prompt": "English Synonyms for words - Comfort?",
+    "prompt": "What is 27-19+11?",
     "showOptions": false,
     "options": [
       "A",
@@ -38,7 +38,7 @@
   {
     "id": "q4",
     "type": "mcq",
-    "prompt": "English Antonyms for words - Friend?",
+    "prompt": "Explain \"Education and intelligence aren't the same thing.\"",
     "showOptions": false,
     "options": [
       "A",
@@ -50,7 +50,7 @@
   {
     "id": "q5",
     "type": "mcq",
-    "prompt": "English Antonyms for words - Pretty?",
+    "prompt": "Give 3 synonyms for the word \"Duration\".",
     "showOptions": false,
     "options": [
       "A",
@@ -62,7 +62,7 @@
   {
     "id": "q6",
     "type": "mcq",
-    "prompt": "English Antonyms for words - Reward?",
+    "prompt": "Tell me the name of the four known persons whom you have seen since morning in sequential order.",
     "showOptions": false,
     "options": [
       "A",
@@ -74,7 +74,7 @@
   {
     "id": "q7",
     "type": "mcq",
-    "prompt": "3+19+21=?",
+    "prompt": "Describe the design and color of your 2 favorite dresses.",
     "showOptions": false,
     "options": [
       "A",
@@ -86,7 +86,7 @@
   {
     "id": "q8",
     "type": "mcq",
-    "prompt": "2×3×5=?",
+    "prompt": "Tell me your 2 favorite songs in male voice.",
     "showOptions": false,
     "options": [
       "A",
@@ -98,7 +98,7 @@
   {
     "id": "q9",
     "type": "mcq",
-    "prompt": "81÷27=?",
+    "prompt": "Give 5 words which rhyme with the word \"Silk\".",
     "showOptions": false,
     "options": [
       "A",
@@ -110,7 +110,7 @@
   {
     "id": "q10",
     "type": "mcq",
-    "prompt": "83-21-14=?",
+    "prompt": "If Delhi is your reference point then in which direction is Haryana located?",
     "showOptions": false,
     "options": [
       "A",

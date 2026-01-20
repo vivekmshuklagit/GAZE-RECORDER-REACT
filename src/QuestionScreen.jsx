@@ -24,7 +24,7 @@ export default function QuestionScreen() {
   }
 
   const canBack = idx > 0;
-  const canNext = idx < questions.length - 1;
+  const canNext = questions.length > 0;
 
   function onSelect(optionIndex) {
     setResponses((r) => ({ ...r, [q.id]: optionIndex }));
@@ -89,13 +89,13 @@ export default function QuestionScreen() {
         </button>
 
         <button
-          onClick={() => setIdx((i) => Math.min(questions.length - 1, i + 1))}
+          onClick={() => setIdx((i) => (i + 1) % questions.length)}
           disabled={!canNext}
           data-content-id="btn_next"
           data-content-type="nav_button"
           style={navBtnStyle(!canNext)}
         >
-          Next
+          {idx === questions.length - 1 ? "Restart" : "Next"}
         </button>
 
         <button
