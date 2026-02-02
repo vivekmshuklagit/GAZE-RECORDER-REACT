@@ -3,120 +3,137 @@
     "id": "q1",
     "type": "mcq",
     "prompt": "What is a book. Explain.",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000,
+    "responseType": "text"
   },
-{
+  {
     "id": "q2",
     "type": "mcq",
     "prompt": "Which alphabet comes 4 places after H?",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ]
+      "L",
+      "I",
+      "J",
+      "K"
+    ],
+    "optionDelayMs": 5000
   },
   {
     "id": "q3",
     "type": "mcq",
     "prompt": "What is 27-19+11?",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ]
+      "18",
+      "20",
+      "19",
+      "15"
+    ],
+    "optionDelayMs": 5000
   },
   {
     "id": "q4",
     "type": "mcq",
     "prompt": "Explain \"Education and intelligence aren't the same thing.\"",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000,
+    "responseType": "text"
   },
   {
     "id": "q5",
     "type": "mcq",
     "prompt": "Give 3 synonyms for the word \"Duration\".",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000,
+    "responseType": "text"
   },
   {
     "id": "q6",
     "type": "mcq",
     "prompt": "Tell me the name of the four known persons whom you have seen since morning in sequential order.",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000,
+    "responseType": "text"
   },
   {
     "id": "q7",
     "type": "mcq",
     "prompt": "Describe the design and color of your 2 favorite dresses.",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000,
+    "responseType": "text"
   },
   {
     "id": "q8",
     "type": "mcq",
     "prompt": "Tell me your 2 favorite songs in male voice.",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000,
+    "responseType": "text"
   },
   {
     "id": "q9",
     "type": "mcq",
     "prompt": "Give 5 words which rhyme with the word \"Silk\".",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000,
+    "responseType": "text"
   },
   {
     "id": "q10",
     "type": "mcq",
     "prompt": "If Delhi is your reference point then in which direction is Haryana located?",
-    "showOptions": false,
+    "showOptions": true,
     "options": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "optionDelayMs": 5000
   }
 ]

@@ -5,7 +5,7 @@
 // - Maps gaze -> content via elementFromPoint + walk-up to nearest [data-content-id]
 // - Downloads CSV
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useAudioRecorder from "./useAudioRecorder";
 
 function safeUUID() {
@@ -27,7 +27,9 @@ function csvEscape(v) {
 
 function downloadCsv(filename, rows) {
   if (!rows.length) return;
-  const header = Object.keys(rows[0]);
+  const headerSet = new Set();
+  rows.forEach((r) => Object.keys(r).forEach((k) => headerSet.add(k)));
+  const header = Array.from(headerSet);
   const lines = [
     header.join(","),
     ...rows.map((r) => header.map((k) => csvEscape(r[k])).join(",")),
@@ -117,7 +119,23 @@ function make9PointGrid(w, h) {
   return pts;
 }
 
-export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint = 5 }) {
+export default function GazeRecorder({
+  sampleHz = 5,
+  clicksPerCalibrationPoint = 5,
+  onStartRecording,
+  onRegisterAnswerHandler,
+  onRegisterDownloadHandler,
+  onPsychometricStart,
+  onPsychometricStop,
+  onDownloadAllCsvs,
+  onCalibrationDone,
+  onRegisterSessionResetHandler,
+  onSessionIdChange,
+  startBlocked = false,
+  startBlockedReason = "",
+  onRestartSession,
+  psychometricActive = false,
+}) {
   const [ready, setReady] = useState(false);
   const [recording, setRecording] = useState(false);
   const [calibrating, setCalibrating] = useState(false);
@@ -168,6 +186,57 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
       audioTickRef.current = null;
     };
   }, [audioRecording]);
+
+  useEffect(() => {
+    if (typeof onSessionIdChange === "function") {
+      onSessionIdChange(sessionIdRef.current);
+    }
+  }, [onSessionIdChange]);
+
+  const recordAnswerEvent = useCallback(
+    (questionId, optionIndex, optionText, answerText) => {
+      if (!recording) return;
+      if (!recordingStartTsRef.current) return;
+      samplesRef.current.push({
+        session_id: sessionIdRef.current,
+        ts_ms: Math.round(performance.now() - recordingStartTsRef.current),
+        gaze_x_px: "",
+        gaze_y_px: "",
+        gaze_x_norm: "",
+        gaze_y_norm: "",
+        scroll_y: Math.round(window.scrollY || 0),
+        audio_recording: audioRecordingRef.current ? 1 : 0,
+        audio_segment_id: audioRecordingRef.current ? audioSegmentIdRef.current || "" : "",
+        audio_ts_ms:
+          audioRecordingRef.current && lastAudioTsRef.current != null
+            ? Math.round(lastAudioTsRef.current - recordingStartTsRef.current)
+            : "",
+        content_id: "",
+        content_type: "answer",
+        question_id: questionId || "",
+        element_tag: "",
+        element_id: "",
+        element_class: "",
+        bbox_x: "",
+        bbox_y: "",
+        bbox_w: "",
+        bbox_h: "",
+        event_type: "answer",
+        answer_option_index: optionIndex ?? "",
+        answer_option_text: optionText ?? "",
+        answer_text: answerText ?? "",
+        answer_type: optionIndex == null ? "text" : "option",
+      });
+    },
+    [recording]
+  );
+
+  useEffect(() => {
+    if (typeof onRegisterAnswerHandler === "function") {
+      onRegisterAnswerHandler(recordAnswerEvent);
+      return () => onRegisterAnswerHandler(null);
+    }
+  }, [onRegisterAnswerHandler, recordAnswerEvent]);
 
   // Start WebGazer
   useEffect(() => {
@@ -256,6 +325,11 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
         bbox_y: ctx.bbox_y,
         bbox_w: ctx.bbox_w,
         bbox_h: ctx.bbox_h,
+        event_type: "gaze",
+        answer_option_index: "",
+        answer_option_text: "",
+        answer_text: "",
+        answer_type: "",
       });
     }, periodMs);
 
@@ -294,19 +368,55 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
       if (nextIdx >= calibPts.length) {
         setCalibrating(false);
         setStatus("calibration done");
+        if (typeof onCalibrationDone === "function") onCalibrationDone();
       }
     }
   }
 
   function startRecording() {
     samplesRef.current = [];
-    sessionIdRef.current = safeUUID();
     recordingStartTsRef.current = performance.now();
     clearAudioRecordings();
     audioSegmentIdRef.current = null;
     setRecording(true);
     setStatus("recording");
+    if (typeof onStartRecording === "function") onStartRecording();
   }
+
+  const resetSession = () => {
+    sessionIdRef.current = safeUUID();
+    samplesRef.current = [];
+    recordingStartTsRef.current = null;
+    setRecording(false);
+    setStatus("ready");
+    if (audioRecordingRef.current) {
+      stopAudio();
+    }
+    if (typeof onSessionIdChange === "function") onSessionIdChange(sessionIdRef.current);
+  };
+
+  useEffect(() => {
+    if (typeof onRegisterSessionResetHandler === "function") {
+      onRegisterSessionResetHandler(resetSession);
+      return () => onRegisterSessionResetHandler(null);
+    }
+  }, [onRegisterSessionResetHandler, resetSession]);
+
+  const handlePsychometricStart = () => {
+    if (typeof onPsychometricStart === "function") onPsychometricStart();
+  };
+
+  const handlePsychometricStop = () => {
+    if (typeof onPsychometricStop === "function") onPsychometricStop();
+  };
+
+  const handleDownloadAllCsvs = () => {
+    if (typeof onDownloadAllCsvs === "function") onDownloadAllCsvs();
+  };
+
+  const handleRestartSession = () => {
+    if (typeof onRestartSession === "function") onRestartSession();
+  };
 
   function stopRecording() {
     setRecording(false);
@@ -322,6 +432,13 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
     if (!rows.length) return;
     downloadCsv(`gaze_session_${sessionIdRef.current}.csv`, rows);
   }
+
+  useEffect(() => {
+    if (typeof onRegisterDownloadHandler === "function") {
+      onRegisterDownloadHandler(download);
+      return () => onRegisterDownloadHandler(null);
+    }
+  }, [onRegisterDownloadHandler, download]);
 
   async function startAudioRecording() {
     if (!recording) return;
@@ -375,12 +492,17 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
           Calibrate
         </button>
 
-        <button style={btnStyle} onClick={startRecording} disabled={!ready || calibrating || recording}>
-          Start
+        <button
+          style={btnStyle}
+          onClick={startRecording}
+          disabled={!ready || calibrating || recording || startBlocked}
+          title={startBlocked ? startBlockedReason : ""}
+        >
+          Gaze Recorder Start
         </button>
 
         <button style={btnStyle} onClick={stopRecording} disabled={!recording}>
-          Stop
+          Gaze Recorder Stop
         </button>
 
         <button
@@ -404,8 +526,20 @@ export default function GazeRecorder({ sampleHz = 5, clicksPerCalibrationPoint =
           Audio Log CSV
         </button>
 
-        <button style={btnStyle} onClick={download} disabled={recording || samplesRef.current.length === 0}>
-          Download CSV
+        <button style={btnStyle} onClick={handlePsychometricStart} disabled={psychometricActive}>
+          Psychometric Test Start
+        </button>
+
+        <button style={btnStyle} onClick={handlePsychometricStop} disabled={!psychometricActive}>
+          Psychometric Test Stop
+        </button>
+
+        <button style={btnStyle} onClick={handleRestartSession}>
+          Restart Session
+        </button>
+
+        <button style={btnStyle} onClick={handleDownloadAllCsvs}>
+          Download CSVs
         </button>
 
         <div style={{ opacity: 0.8, fontSize: 12 }}>

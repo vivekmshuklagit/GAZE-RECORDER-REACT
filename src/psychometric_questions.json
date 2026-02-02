@@ -1,0 +1,67 @@
+[
+  {
+    "id": "p1",
+    "type": "mcq",
+    "prompt": "I enjoy being in social situations.",
+    "showOptions": true,
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  },
+  {
+    "id": "p2",
+    "type": "mcq",
+    "prompt": "I often plan ahead and stick to my plans.",
+    "showOptions": true,
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  },
+  {
+    "id": "p3",
+    "type": "mcq",
+    "prompt": "I stay calm under pressure.",
+    "showOptions": true,
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  },
+  {
+    "id": "p4",
+    "type": "mcq",
+    "prompt": "I enjoy learning new things.",
+    "showOptions": true,
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  },
+  {
+    "id": "p5",
+    "type": "mcq",
+    "prompt": "I find it easy to empathize with others.",
+    "showOptions": true,
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  }
+]
